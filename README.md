@@ -1,1 +1,2 @@
-# purple-school-course-react
+Task #1
+"COMPONENTS"
