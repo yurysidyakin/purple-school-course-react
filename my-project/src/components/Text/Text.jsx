@@ -1,7 +1,7 @@
 import './Text.css';
 
 function Text({ text }) {
-  return <p className="text">{text}</p>;
+	return <p className='text'>{text}</p>;
 }
 
 export default Text;

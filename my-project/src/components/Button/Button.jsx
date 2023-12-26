@@ -1,7 +1,11 @@
 import './Button.css';
 
-function Button() {
-  return <button className="button">Искать</button>;
+function Button({ text }) {
+	return (
+		<button className='button' onClick={() => console.log('Нажали на поиск')}>
+			{text}
+		</button>
+	);
 }
 
 export default Button;
