@@ -31,12 +31,12 @@ function App() {
 					</InputAndButtonWrapper>
 					<CardList>
 						{db.map(el => (
-							// eslint-disable-next-line react/jsx-key
 							<CardItem
 								status={el.status}
 								rating={el.rating}
 								image={el.image}
 								title={el.title}
+								key={el.id}
 							/>
 						))}
 					</CardList>
