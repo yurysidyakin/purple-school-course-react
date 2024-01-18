@@ -1,11 +1,11 @@
 import Logo from '../Logo/Logo';
 import Menu from '../Menu/Menu';
 
-import './Header.css';
+import styles from './Header.module.css';
 
 function Header() {
 	return (
-		<div className='header'>
+		<div className={styles['header']}>
 			<Logo />
 			<Menu />
 		</div>

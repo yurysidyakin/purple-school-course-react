@@ -1,11 +1,7 @@
-import './Button.css';
+import styles from './Button.module.css';
 
 function Button({ text }) {
-	return (
-		<button className='button' onClick={() => console.log('Нажали на поиск')}>
-			{text}
-		</button>
-	);
+	return <button className={styles['button']}>{text}</button>;
 }
 
 export default Button;

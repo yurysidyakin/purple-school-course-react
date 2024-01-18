@@ -1,7 +1,7 @@
-import './InputAndButtonWrapper.css';
+import styles from './InputAndButtonWrapper.module.css';
 
 function InputAndButtonWrapper({ children }) {
-	return <div className='input-and-button-wrapper'>{children}</div>;
+	return <div className={styles['input-and-button-wrapper']}>{children}</div>;
 }
 
 export default InputAndButtonWrapper;
