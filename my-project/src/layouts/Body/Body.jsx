@@ -1,7 +1,8 @@
 import styles from './Body.module.css';
+import cn from 'classnames';
 
 function Body({ children }) {
-	return <div className={styles['body']}>{children}</div>;
+	return <div className={cn(styles['body'])}>{children}</div>;
 }
 
 export default Body;
