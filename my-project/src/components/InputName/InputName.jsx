@@ -12,7 +12,7 @@ const InputName = forwardRef(function InputName(props, ref)  {
 			type='text'
 			className={cn(styles['input-name'])}
 			placeholder={props.placeholder}
-			
+			value={props.value} 
 		/>
 	);
 }

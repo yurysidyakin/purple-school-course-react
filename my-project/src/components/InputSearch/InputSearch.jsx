@@ -13,7 +13,7 @@ const InputSearch = forwardRef(function InputSearch(props, ref)  {
 			type='text'
 			className={cn(styles['input-search'])}
 			placeholder={props.placeholder}
-			
+			value={props.value}
 		/>
 	);
 }
