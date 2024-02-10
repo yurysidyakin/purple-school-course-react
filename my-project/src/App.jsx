@@ -1,3 +1,4 @@
+import {useRef } from 'react';
 import db from '../public/db';
 import './App.css';
 import Button from './components/Button/Button';
@@ -18,6 +19,12 @@ function App() {
 
 	const title = ['Поиск'];
 
+	const inputSearchRef = useRef();
+
+	const focusInput = () => {
+		inputSearchRef.current.focus();
+	};
+
 	return (
 		<>
 			<Body>
@@ -26,8 +33,8 @@ function App() {
 					<Title title={title[0]} />
 					<Text text={text[0]} />
 					<InputAndButtonWrapper>
-						<InputSearch />
-						<Button text='Искать' />
+						<InputSearch ref={inputSearchRef}/>
+						<Button text='Искать' onClick={focusInput}/>
 					</InputAndButtonWrapper>
 					<CardList>
 						{db.map(el => (
