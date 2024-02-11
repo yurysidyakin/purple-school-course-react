@@ -37,6 +37,20 @@ function App() {
     }
   };
 
+  const[usersList, setUsersList] = useState([]);
+
+  const handleRegistration = () => {
+    if (inputNameValue.trim() === '') {
+      focusInput(inputNameRef);
+      alert('Пожалуйста, введите имя пользователя.');
+      return;
+    }
+    const newUser = {name: inputNameValue, isLogined:true };
+    setUsersList([...usersList, newUser]); 
+    localStorage.setItem('users', JSON.stringify([...usersList, newUser]));
+    setInputNameValue('');
+  };
+
   return (
     <>
       <Body>
@@ -70,7 +84,9 @@ function App() {
               value={inputNameValue} 
               onChange={handleChangeName}
             />
-            <Button text="Войти в профиль" onClick={() => focusInput(inputNameRef)}/>
+            <Button text="Войти в профиль" 
+            onClick={handleRegistration} 
+            />
           </InputAndButtonWrapper>
         </Container>
       </Body>
