@@ -4,11 +4,11 @@ import Menu from '../Menu/Menu';
 
 import styles from './Header.module.css';
 
-function Header({ nameUser }) {
+function Header({ User }) {
 	return (
 		<div className={cn(styles['header'])}>
 			<Logo />
-			<Menu nameUser={nameUser} />
+			<Menu User={User} />
 		</div>
 	);
 }

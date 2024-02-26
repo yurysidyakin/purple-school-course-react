@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import styles from './Menu.module.css';
 
-function Menu({ nameUser }) {
+function Menu({ User }) {
 	return (
 		<nav className={cn(styles['menu'])}>
 			<ul className={cn(styles['menu__list'])}>
@@ -12,7 +12,7 @@ function Menu({ nameUser }) {
 				</li>
 				<li className={cn(styles['menu__item'])}>
 					<a href='#' className={cn(styles['menu__link'])}>
-						{nameUser}
+						{User.name}
 						<img src='../../../public/user.svg' alt='Иконка пользователя' />
 					</a>
 				</li>

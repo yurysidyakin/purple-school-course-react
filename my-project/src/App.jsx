@@ -44,13 +44,18 @@ function App() {
 		}
 
 		const newUser = { name: inputNameValue, isLogined: true };
-		const filterUserList = usersList.some(user => user.name === newUser.name);
 
-		if (!filterUserList) {
+		const filterUserListForName = usersList.some(
+			user => user.name === newUser.name
+		);
+		const filterUserListForIsLogined = usersList.some(
+			user => user.isLogined == false
+		);
+
+		if (!filterUserListForName && !filterUserListForIsLogined) {
 			setUsersList([...usersList, newUser]);
 			localStorage.setItem('users', JSON.stringify([...usersList, newUser]));
 		}
-
 		setInputNameValue('');
 	};
 
@@ -59,9 +64,7 @@ function App() {
 			<Body>
 				<Container>
 					<Header
-						nameUser={
-							usersList.length > 0 ? usersList[usersList.length - 1].name : ''
-						}
+						User={usersList.length > 0 ? usersList[usersList.length - 1] : ''}
 					/>
 					<Title title={title[0]} />
 					<Text text={text[0]} />
