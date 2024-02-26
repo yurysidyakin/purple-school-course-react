@@ -41,12 +41,16 @@ function App() {
 	const handleRegistration = () => {
 		if (inputNameValue.trim() === '') {
 			focusInput(inputNameRef);
-			return;
 		}
-		const newUser = { name: inputNameValue, isLogined: true };
-		setUsersList([...usersList, newUser]);
 
-		localStorage.setItem('users', JSON.stringify([...usersList, newUser]));
+		const newUser = { name: inputNameValue, isLogined: true };
+		const filterUserList = usersList.some(user => user.name === newUser.name);
+
+		if (!filterUserList) {
+			setUsersList([...usersList, newUser]);
+			localStorage.setItem('users', JSON.stringify([...usersList, newUser]));
+		}
+
 		setInputNameValue('');
 	};
 
