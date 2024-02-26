@@ -1,7 +1,8 @@
 import cn from 'classnames';
 import styles from './Menu.module.css';
+import { MenuProps } from './MenuProps';
 
-function Menu({ User }) {
+function Menu({ User }: MenuProps) {
 	return (
 		<nav className={cn(styles['menu'])}>
 			<ul className={cn(styles['menu__list'])}>

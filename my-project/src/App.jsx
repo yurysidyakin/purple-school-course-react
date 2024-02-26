@@ -5,9 +5,9 @@ import Button from './components/Button/Button';
 import CardItem from './components/CardItem/CardItem';
 import CardList from './components/CardList/CardList';
 import Header from './components/Header/Header';
+import InputAndButtonWrapper from './components/InputAndButtonWrapper/InputAndButtonWrapper';
 import InputName from './components/InputName/InputName';
 import InputSearch from './components/InputSearch/InputSearch';
-import InputAndButtonWrapper from './components/InputWrapper/InputAndButtonWrapper';
 import Text from './components/Text/Text';
 import Title from './components/Title/Title';
 import Body from './layouts/Body/Body';
@@ -66,14 +66,14 @@ function App() {
 					<Header
 						User={usersList.length > 0 ? usersList[usersList.length - 1] : ''}
 					/>
-					<Title title={title[0]} />
-					<Text text={text[0]} />
+					<Title>{title[0]}</Title>
+					<Text>{text[0]}</Text>
 					<InputAndButtonWrapper>
 						<InputSearch
 							placeholder='Введите название фильма'
 							ref={inputSearchRef}
 						/>
-						<Button text='Искать' onClick={() => focusInput(inputSearchRef)} />
+						<Button onClick={() => focusInput(inputSearchRef)}>Искать</Button>
 					</InputAndButtonWrapper>
 					<CardList>
 						{db.map(el => (
@@ -86,7 +86,7 @@ function App() {
 							/>
 						))}
 					</CardList>
-					<Title title={title[1]} />
+					<Title>{title[1]}</Title>
 					<InputAndButtonWrapper>
 						<InputName
 							placeholder='Ваше имя'
@@ -94,7 +94,7 @@ function App() {
 							value={inputNameValue}
 							onChange={handleChangeName}
 						/>
-						<Button text='Войти в профиль' onClick={handleRegistration} />
+						<Button onClick={handleRegistration}>Войти в профиль</Button>
 					</InputAndButtonWrapper>
 				</Container>
 			</Body>

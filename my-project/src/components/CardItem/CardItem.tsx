@@ -1,7 +1,8 @@
 import cn from 'classnames';
 import styles from './CardItem.module.css';
+import { CardItemProps } from './CardItem.proprs';
 
-function CardItem({ image, status, title, rating }) {
+function CardItem({ image, status, title, rating }: CardItemProps) {
 	return (
 		<div className={cn(styles['card-item'])}>
 			<div className={cn(styles['card-item__header'])}>
