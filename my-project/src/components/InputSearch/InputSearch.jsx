@@ -1,14 +1,23 @@
+
+import { forwardRef } from 'react';
 import styles from './InputSearch.module.css';
 import cn from 'classnames';
 
-function InputSearch() {
+
+const InputSearch = forwardRef(function InputSearch(props, ref)  {
+
 	return (
 		<input
+			{...props}
+			ref={ref}
 			type='text'
 			className={cn(styles['input-search'])}
-			placeholder='Введите название'
+			placeholder={props.placeholder}
+			value={props.value}
 		/>
 	);
 }
+);
+
 
 export default InputSearch;

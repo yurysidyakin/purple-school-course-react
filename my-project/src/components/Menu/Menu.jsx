@@ -1,7 +1,7 @@
-import styles from './Menu.module.css';
 import cn from 'classnames';
+import styles from './Menu.module.css';
 
-function Menu() {
+function Menu({ User }) {
 	return (
 		<nav className={cn(styles['menu'])}>
 			<ul className={cn(styles['menu__list'])}>
@@ -12,12 +12,13 @@ function Menu() {
 				</li>
 				<li className={cn(styles['menu__item'])}>
 					<a href='#' className={cn(styles['menu__link'])}>
-						Мои фильмы
+						{User.name}
+						<img src='../../../public/user.svg' alt='Иконка пользователя' />
 					</a>
 				</li>
 				<li className={cn(styles['menu__item'])}>
 					<a href='#' className={cn(styles['menu__link'])}>
-						Войти
+						Выйти
 					</a>
 				</li>
 			</ul>
