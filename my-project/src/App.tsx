@@ -20,10 +20,15 @@ function App() {
 
 	const title = ['Поиск', 'Вход'];
 
+	interface User {
+		name: string;
+		isLogined: boolean;
+	}
+
 	const [inputNameValue, setInputNameValue] = useState('');
 	const [usersList, setUsersList] = useState([]);
 
-	const handleChangeName = event => {
+	const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setInputNameValue(event.target.value);
 	};
 
@@ -43,7 +48,7 @@ function App() {
 			focusInput(inputNameRef);
 		}
 
-		const newUser = { name: inputNameValue, isLogined: true };
+		const newUser: User = { name: inputNameValue, isLogined: true };
 
 		const filterUserListForName = usersList.some(
 			user => user.name === newUser.name

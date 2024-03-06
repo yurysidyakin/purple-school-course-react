@@ -1,5 +1,6 @@
 .input-name {
 	padding: 12px 16px 12px 40px;
+	background-color: var(--color-background);
 	width: 384px;
 	color: #475069;
 	align-items: flex-start;
