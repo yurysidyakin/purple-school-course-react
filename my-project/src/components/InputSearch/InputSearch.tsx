@@ -8,14 +8,21 @@ const InputSearch = forwardRef(function InputSearch(
 	ref: ForwardedRef<HTMLInputElement>
 ) {
 	return (
-		<input
-			{...props}
-			ref={ref}
-			type='text'
-			className={cn(styles['input-search'])}
-			placeholder={props.placeholder}
-			value={props.value}
-		/>
+		<div className={cn(styles['input-search-wrapper'])}>
+			<input
+				{...props}
+				ref={ref}
+				type='text'
+				className={cn(styles['input-search'])}
+				placeholder={props.placeholder}
+				value={props.value}
+			/>
+			<img
+				className={cn(styles['input-search__img'])}
+				src='/public/search.svg'
+				alt='Иконка поиска'
+			/>
+		</div>
 	);
 });
 
