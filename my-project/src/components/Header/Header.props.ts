@@ -1,5 +1,5 @@
 export interface HeaderProps {
-	User: {
+	User?: {
 		name: string;
 		isLogined: boolean;
 	};

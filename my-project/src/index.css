@@ -2,8 +2,9 @@
 
 :root {
 	--font: 'Poppins', sans-serif;
-	--color-background: #242424;
+	--color-background: #121829;
 	--color-text: rgba(255, 255, 255, 0.87);
+	--color-accent: #7b6ef6;
 }
 
 body {
@@ -12,6 +13,8 @@ body {
 	color: var(--color-text);
 	margin: 0;
 	padding: 0;
+	height: 100%;
+	overflow-y: scroll;
 }
 
 ul {

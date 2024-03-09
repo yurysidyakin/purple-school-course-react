@@ -1,5 +1,5 @@
-export interface MenuProps {
-	User: {
+export interface LayoutProps {
+	User?: {
 		name: string;
 		isLogined: boolean;
 	};

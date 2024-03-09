@@ -3,4 +3,5 @@ export interface CardItemProps {
 	status: string;
 	title: string;
 	rating: string;
+	id: number;
 }
