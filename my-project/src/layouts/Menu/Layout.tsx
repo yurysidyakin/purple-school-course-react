@@ -12,17 +12,38 @@ export function Layout({ User }: LayoutProps) {
 				<nav className={cn(styles['menu'])}>
 					<ul className={cn(styles['menu__list'])}>
 						<li className={cn(styles['menu__item'])}>
-							<NavLink to='/' className={cn(styles['menu__link'])}>
+							<NavLink
+								to='/'
+								className={({ isActive }) =>
+									cn(styles['menu__link'], {
+										[styles.active]: isActive,
+									})
+								}
+							>
 								Поиск фильмов
 							</NavLink>
 						</li>
 						<li className={cn(styles['menu__item'])}>
-							<NavLink to='/favorites' className={cn(styles['menu__link'])}>
+							<NavLink
+								to='/favorites'
+								className={({ isActive }) =>
+									cn(styles['menu__link'], {
+										[styles.active]: isActive,
+									})
+								}
+							>
 								Мои фильмы
 							</NavLink>
 						</li>
 						<li className={cn(styles['menu__item'])}>
-							<NavLink to='/login' className={cn(styles['menu__link'])}>
+							<NavLink
+								to='/login'
+								className={({ isActive }) =>
+									cn(styles['menu__link'], {
+										[styles.active]: isActive,
+									})
+								}
+							>
 								Войти
 								<img
 									className={styles['exit-icon']}

@@ -24,3 +24,7 @@
 .exit-icon {
 	width: 100%;
 }
+
+.active {
+	color: var(--color-accent);
+}
