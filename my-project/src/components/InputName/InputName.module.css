@@ -1,17 +1,13 @@
-.input-name{
-    padding: 12px 16px;
-    width: 384px;
-    color: #475069;
-    align-items: flex-start;
-    justify-content: center;
-    height: 40px;
-    border-radius: 12px;
-    border: 1px solid #323B54;
-    outline: none;
-    background: url('../../../public/search.svg') no-repeat;
-    background-position: 5%
-    }
-
-    .input-name::placeholder{
-    padding-left: 50px;
-    }
+.input-name {
+	padding: 12px 16px 12px 40px;
+	background-color: var(--color-background);
+	width: 384px;
+	color: #475069;
+	align-items: flex-start;
+	justify-content: center;
+	height: 40px;
+	border-radius: 12px;
+	border: 1px solid #323b54;
+	outline: none;
+	margin-bottom: 30px;
+}
