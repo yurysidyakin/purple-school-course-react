@@ -13,17 +13,17 @@ function CardItem(props: CardItemProps) {
 						alt='image'
 						className={cn(styles['card-item__image'])}
 					/>
-					<img
-						src={props.rating}
-						className={cn(styles['card-item__status-img'])}
-					></img>
+					<div className={cn(styles['card-item__rank'])}>
+						<img src='../../../public/star-icon.svg' alt='Иконка звезды' />
+						{props.rank}
+					</div>
 				</div>
 				<div className={cn(styles['card-item__description'])}>
 					<p className={cn(styles['card-item__title'])}>{props.title}</p>
 					<div className={cn(styles['card-item__status'])}>
 						<img src='../../../public/like.svg' alt='like' />
 						<div className={cn(styles['card-item__status-text'])}>
-							{props.status}
+							В избранное
 						</div>
 					</div>
 				</div>
