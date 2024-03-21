@@ -1,36 +1,29 @@
-import { useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { Product } from '../../interfaces/product.interface';
 import styles from './Movie.module.css';
 
 export function Movie() {
-	const { id } = useParams();
+	const data = useLoaderData() as Product;
+	console.log(data);
+
 	return (
 		<>
 			<div className={styles['head']}>
 				<p>Поиск фильмов</p>
-				<h2>Avengers: Endgame</h2>
+				<h2>{data.fake['#TITLE']}</h2>
 			</div>
 			<div className={styles['content']}>
 				<div className={styles['left-side']}>
 					<img
 						className={styles['image']}
-						src={`../../../public/images/CardImage${id}.jpg`}
+						src={`${data.fake['#IMG_POSTER']}`}
 						alt='Постер фильма'
 					/>
 				</div>
 				<div className={styles['right-side']}>
-					<p className={styles['text']}>
-						After the devastating events of Avengers: Infinity War, the universe
-						is in ruins due to the efforts of the Mad Titan, Thanos. With the
-						help of remaining allies, the Avengers must assemble once more in
-						order to undo Thanos' actions and restore order to the universe once
-						and for all, no matter what consequences may be in store.
-					</p>
+					<p className={styles['text']}>{data.short['description']}</p>
 					<div className={styles['wrapper']}>
-						<img
-							className={styles['image-rating']}
-							src={`../../../public/images/Rating${id}.svg`}
-							alt='Рейтинг фильма'
-						/>
+						<div className={styles['rank']}>{data.fake['#RANK']}</div>
 						<div className={styles['status']}>
 							<img src='../../../public/like.svg' alt='Иконка лайка' />
 							<p>В избранное</p>
@@ -43,16 +36,20 @@ export function Movie() {
 						</li>
 						<li className={styles['detail__item']}>
 							<p className={styles['detail__subtitle']}>Дата выхода</p>
-							<p className={styles['detail__text']}>2019-04-24</p>
+							<p className={styles['detail__text']}>
+								{data.short['datePublished']}
+							</p>
 						</li>
 						<li className={styles['detail__item']}>
 							<p className={styles['detail__subtitle']}>Длительность</p>
-							<p className={styles['detail__text']}>181 мин</p>
+							<p className={styles['detail__text']}>
+								{data.main.runtime['seconds'] / 60}
+							</p>
 						</li>
 						<li className={styles['detail__item']}>
 							<p className={styles['detail__subtitle']}>Жанр</p>
 							<p className={styles['detail__text']}>
-								Adventure, Science Fiction, Action
+								{data.short['genre'].join(', ')}
 							</p>
 						</li>
 					</ul>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -25,6 +26,12 @@ const router = createBrowserRouter([
 			{
 				path: '/movie/:id',
 				element: <Movie />,
+				loader: async ({ params }) => {
+					const { data } = await axios.get(
+						`https://search.imdbot.workers.dev/?tt=${params.id}`
+					);
+					return data;
+				},
 			},
 			{
 				path: '/favorites',
