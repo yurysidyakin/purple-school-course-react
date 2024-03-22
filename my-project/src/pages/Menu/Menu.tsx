@@ -11,7 +11,7 @@ import { PREFIX } from '../../helpers/API';
 import { Product } from '../../interfaces/product.interface';
 import './Menu.module.css';
 
-export function Menu() {
+function Menu() {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
@@ -79,3 +79,5 @@ export function Menu() {
 		</>
 	);
 }
+
+export default Menu;
