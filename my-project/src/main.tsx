@@ -1,13 +1,16 @@
-import React from 'react';
+import axios from 'axios';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RequireAuth } from './helpers/requireAuth';
 import './index.css';
 import { Layout } from './layouts/Menu/Layout';
 import { Error } from './pages/Error/Error';
 import { Favorites } from './pages/Favorites/Favorites';
 import { Login } from './pages/Login/Login';
-import { Menu } from './pages/Menu/Menu';
 import { Movie } from './pages/Movie/Movie';
+
+const Menu = lazy(() => import('./pages/Menu/Menu'));
 
 const router = createBrowserRouter([
 	{
@@ -16,7 +19,13 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Menu />,
+				element: (
+					<RequireAuth>
+						<Suspense fallback={<>Загрузка...</>}>
+							<Menu />
+						</Suspense>
+					</RequireAuth>
+				),
 			},
 			{
 				path: '/login',
@@ -24,11 +33,26 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/movie/:id',
-				element: <Movie />,
+				element: (
+					<RequireAuth>
+						<Movie />
+					</RequireAuth>
+				),
+				errorElement: <>Ошибка...</>,
+				loader: async ({ params }) => {
+					const { data } = await axios.get(
+						`https://search.imdbot.workers.dev/?tt=${params.id}`
+					);
+					return data;
+				},
 			},
 			{
 				path: '/favorites',
-				element: <Favorites />,
+				element: (
+					<RequireAuth>
+						<Favorites />
+					</RequireAuth>
+				),
 			},
 		],
 	},

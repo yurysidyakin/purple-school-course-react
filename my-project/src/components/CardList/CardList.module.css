@@ -1,6 +1,7 @@
 .card-list {
 	display: flex;
-	gap: 24px;
+	row-gap: 100px;
+	gap: 50px;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }

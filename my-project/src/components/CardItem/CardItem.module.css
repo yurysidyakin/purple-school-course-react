@@ -1,48 +1,57 @@
-.card-item{
+.card-item {
 	width: 300px;
 	height: 520px;
 	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
 	padding: 8px 8px 16px 8px;
-	background: rgba(32, 40, 62, 0.80);
+	background: rgba(32, 40, 62, 0.8);
 	border-radius: 12px;
 	font-family: 'Poppins', sans-serif;
 	height: 100%;
+	justify-content: space-between;
 }
 
-.card-item__header{
+.card-item__header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	position: relative;
 }
 
-.card-item__image{
+.card-item__image {
 	border-radius: 12px;
 	width: 100%;
-	max-height: 424px;
-	object-fit:cover;
+	height: 424px;
+	object-fit: cover;
 }
 
-.card-item__description{
+.card-item__description {
 	display: flex;
 	flex-direction: column;
 	padding: 8px;
 }
 
-.card-item__status{
+.card-item__status {
 	display: flex;
 	gap: 8px;
 }
 
-.card-item__status-text{
-	color:  #7B6EF6;
+.card-item__status-text {
+	color: #7b6ef6;
 	font-weight: 600;
 }
 
-.card-item__status-img{
+.card-item__rank {
+	color: #ffad49;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 	position: absolute;
 	top: 8px;
 	left: 16px;
+	background: rgba(0, 0, 0, 0.65);
+
+	padding: 4px 8px;
+	border-radius: 8px;
 }
