@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RequireAuth } from './helpers/requireAuth';
 import './index.css';
 import { Layout } from './layouts/Menu/Layout';
 import { Error } from './pages/Error/Error';
@@ -19,9 +20,11 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: (
-					<Suspense fallback={<>Загрузка...</>}>
-						<Menu />
-					</Suspense>
+					<RequireAuth>
+						<Suspense fallback={<>Загрузка...</>}>
+							<Menu />
+						</Suspense>
+					</RequireAuth>
 				),
 			},
 			{
@@ -30,7 +33,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/movie/:id',
-				element: <Movie />,
+				element: (
+					<RequireAuth>
+						<Movie />
+					</RequireAuth>
+				),
 				errorElement: <>Ошибка...</>,
 				loader: async ({ params }) => {
 					const { data } = await axios.get(
@@ -41,7 +48,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/favorites',
-				element: <Favorites />,
+				element: (
+					<RequireAuth>
+						<Favorites />
+					</RequireAuth>
+				),
 			},
 		],
 	},
