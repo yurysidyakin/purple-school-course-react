@@ -1,10 +1,16 @@
 import cn from 'classnames';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Container from '../Container/Container';
 import styles from './Layout.module.css';
 import { LayoutProps } from './LayoutProps';
 
 export function Layout({ User }: LayoutProps) {
+	const navigate = useNavigate();
+
+	const logout = () => {
+		localStorage.removeItem('name');
+		navigate('auth/login');
+	};
 	return (
 		<Container>
 			<header className={cn(styles['header'])}>
@@ -49,6 +55,7 @@ export function Layout({ User }: LayoutProps) {
 									className={styles['exit-icon']}
 									src='/public/exit-icon.svg'
 									alt='Иконка выхода'
+									onClick={logout}
 								/>
 							</NavLink>
 						</li>

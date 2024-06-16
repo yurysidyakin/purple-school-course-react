@@ -58,10 +58,12 @@
 .detail__subtitle {
 	color: #c3c8d4;
 }
+
 .footer__title {
 	color: #c3c8d4;
 	font-weight: 700;
 }
+
 .footer__wrapper {
 	display: flex;
 	width: 100%;
