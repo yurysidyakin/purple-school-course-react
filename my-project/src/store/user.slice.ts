@@ -1,11 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { loadState } from './storage';
 
+export const NAME_PERSISTED_NAME = 'userName';
 export interface UserState {
 	name: string | null;
 }
 
+export interface UserPersistent {
+	name: string | null;
+}
+
 const initialState: UserState = {
-	name: null,
+	name: loadState<UserPersistent>(NAME_PERSISTED_NAME)?.name ?? null,
 };
 
 export const userSlice = createSlice({
