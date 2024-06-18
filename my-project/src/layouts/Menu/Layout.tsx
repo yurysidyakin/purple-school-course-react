@@ -1,14 +1,18 @@
 import cn from 'classnames';
+import { useDispatch } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 import Container from '../Container/Container';
 import styles from './Layout.module.css';
 import { LayoutProps } from './LayoutProps';
 
 export function Layout({ User }: LayoutProps) {
 	const navigate = useNavigate();
+	const dispatch = useDispatch<AppDispatch>();
 
 	const logout = () => {
-		localStorage.removeItem('name');
+		dispatch(userActions.logout());
 		navigate('auth/login');
 	};
 	return (
