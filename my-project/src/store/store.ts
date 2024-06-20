@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import favoriteSlice from './favorite.slice';
 import { saveState } from './storage';
 import userSlice, { NAME_PERSISTED_NAME } from './user.slice';
 
 export const store = configureStore({
 	reducer: {
 		user: userSlice,
+		favorite: favoriteSlice,
 	},
 });
 

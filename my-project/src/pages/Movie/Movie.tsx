@@ -1,10 +1,10 @@
 import { useLoaderData } from 'react-router-dom';
 import { Product } from '../../interfaces/product.interface';
 import styles from './Movie.module.css';
+import { MovieProps } from './Movie.props';
 
-export function Movie() {
+export function Movie(props: MovieProps) {
 	const data = useLoaderData() as Product;
-	console.log(data);
 
 	return (
 		<>
@@ -26,7 +26,7 @@ export function Movie() {
 						<div className={styles['rank']}>{data.fake['#RANK']}</div>
 						<div className={styles['status']}>
 							<img src='../../../public/like.svg' alt='Иконка лайка' />
-							<p>В избранное</p>
+							<p> В избранное</p>
 						</div>
 					</div>
 					<ul className={styles['detail__list']}>

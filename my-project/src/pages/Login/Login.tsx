@@ -18,7 +18,6 @@ export function Login() {
 
 	const addName = (event: any) => {
 		event.preventDefault();
-		// localStorage.setItem('name', JSON.stringify(inputName));
 		dispatch(userActions.addName(inputName));
 		navigate('/');
 	};
