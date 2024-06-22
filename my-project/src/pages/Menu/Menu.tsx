@@ -1,5 +1,11 @@
 import axios, { AxiosError } from 'axios';
-import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import {
+	ChangeEvent,
+	MutableRefObject,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import Button from '../../components/Button/Button';
 import CardItem from '../../components/CardItem/CardItem';
 import CardList from '../../components/CardList/CardList';
@@ -15,12 +21,25 @@ function Menu() {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
+	const [filter, setFilter] = useState<string>();
 
-	const getMenu = async () => {
+	useEffect(() => {
+		getMenu(filter);
+	}, [filter]);
+
+	const updateFilter = (e: ChangeEvent<HTMLInputElement>) => {
+		setFilter(e.target.value);
+	};
+
+	const getMenu = async (name?: string) => {
 		try {
 			setIsLoading(true);
-			const { data } = await axios.get<Product[]>(`${PREFIX}`);
-			console.log(data.description);
+			const { data } = await axios.get<Product[]>(`${PREFIX}`, {
+				params: {
+					name,
+				},
+			});
+
 			setProducts(data.description);
 			setIsLoading(false);
 		} catch (e) {
@@ -32,10 +51,6 @@ function Menu() {
 			return;
 		}
 	};
-
-	useEffect(() => {
-		getMenu();
-	}, []);
 
 	const inputSearchRef = useRef();
 	const inputNameRef = useRef();
@@ -59,12 +74,14 @@ function Menu() {
 				<InputSearch
 					placeholder='Введите название фильма'
 					ref={inputSearchRef}
+					onChange={updateFilter}
 				/>
 				<Button onClick={() => focusInput(inputSearchRef)}>Искать</Button>
 			</InputAndButtonWrapper>
 			<CardList>
 				{error && <>{error}</>}
 				{!isLoading &&
+					products.length > 0 &&
 					products.map(el => (
 						<CardItem
 							rank={el['#RANK']}
@@ -75,6 +92,7 @@ function Menu() {
 						/>
 					))}
 				{isLoading && <div>Загружаем фильмы...</div>}
+				{products.length === 0 && <div>Фильм не найден...</div>}
 			</CardList>
 		</>
 	);

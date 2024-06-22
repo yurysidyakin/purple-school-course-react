@@ -1,16 +1,22 @@
 import cn from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { AppDispatch, RootState } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 import Container from '../Container/Container';
 import styles from './Layout.module.css';
 import { LayoutProps } from './LayoutProps';
 
 export function Layout({ User }: LayoutProps) {
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch<AppDispatch>();
 	const logout = () => {
-		localStorage.removeItem('name');
+		dispatch(userActions.logout());
 		navigate('auth/login');
 	};
+	const films = useSelector((s: RootState) => s.favorite.films);
+	console.log(films.reduce((acc, item) => (acc += item.count), 0));
+
 	return (
 		<Container>
 			<header className={cn(styles['header'])}>
@@ -40,6 +46,9 @@ export function Layout({ User }: LayoutProps) {
 							>
 								Мои фильмы
 							</NavLink>
+							<div className={cn(styles['menu__link--favorites'])}>
+								{films.length}
+							</div>
 						</li>
 						<li className={cn(styles['menu__item'])}>
 							<NavLink

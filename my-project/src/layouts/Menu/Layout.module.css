@@ -21,6 +21,21 @@
 	gap: 10px;
 }
 
+.menu__link--favorites {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: var(--color-accent);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu__item {
+	display: flex;
+	gap: 10px;
+}
+
 .exit-icon {
 	width: 100%;
 }
